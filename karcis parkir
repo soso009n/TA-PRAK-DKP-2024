@@ -21,7 +21,7 @@ class VehicleTicket:
         entry_hour, entry_minute = map(int, self.entry_time.split(':'))
         exit_hour, exit_minute = map(int, self.exit_time.split(':'))
 
-    total_hours = exit_hour - entry_hour
+        total_hours = exit_hour - entry_hour
         total_minutes = exit_minute - entry_minute
         if total_minutes < 0:
             total_hours -= 1
@@ -32,7 +32,7 @@ class VehicleTicket:
         if self.vehicle_type == 'motor':
             parking_fee = total_hours * 3000
         elif self.vehicle_type == 'mobil':
-            parking_fee = total_hours * 5000
+            parking_fee = total_hours *5000
         elif self.vehicle_type == 'truk':
             parking_fee = total_hours * 8000
         return parking_fee
@@ -71,7 +71,7 @@ def checkout_ticket(vehicles):
             if parking_fee is not None:
                 print(f"Biaya parkir yang harus dibayar: Rp {parking_fee}")
             vehicles.remove(ticket)
-            found = true
+            found = True
             break
     if not found:
         print("Error: Nomor plat tidak ditemukan.")
@@ -85,7 +85,7 @@ def display_ticket_list(vehicles):
         print()
 
 def main():
-    print("Selamat datang di program parkir\n")
+    print("Selamat datang di Program Parkir\n")
     vehicles = []
 
     while True:
