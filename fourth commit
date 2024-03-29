@@ -1,0 +1,113 @@
+class VehicleTicket:
+    def __init__(self, vehicle_type, plate_number):
+        self.vehicle_type = vehicle_type
+        self.plate_number = plate_number
+        self.entry_time = None
+        self.exit_time = None
+
+    def check_in(self, entry_time):
+        self.entry_time = entry_time
+        print(f"Karcis masuk berhasil dicatat untuk {self.vehicle_type} dengan nomor plat {self.plate_number} pada pukul {entry_time}")
+
+    def check_out(self, exit_time):
+        self.exit_time = exit_time
+        print(f"Karcis keluar berhasil dicatat untuk {self.vehicle_type} dengan nomor plat {self.plate_number} pada pukul {exit_time}")
+
+    def calculate_parking_fee(self):
+        if self.entry_time is None or self.exit_time is None:
+            print("Error: Karcis belum lengkap. Silakan lengkapi data karcis terlebih dahulu.")
+            return None
+
+        entry_hour, entry_minute = map(int, self.entry_time.split(':'))
+        exit_hour, exit_minute = map(int, self.exit_time.split(':'))
+
+        total_hours = exit_hour - entry_hour
+        total_minutes = exit_minute - entry_minute
+        if total_minutes < 0:
+            total_hours -= 1
+            total_minutes += 60
+
+        total_hours += total_minutes / 60  # Tambahkan jam dari menit yang tidak lengkap
+        parking_fee = 0
+        if self.vehicle_type == 'motor':
+            parking_fee = total_hours * 3000
+        elif self.vehicle_type == 'mobil':
+            parking_fee = total_hours * 5000
+        elif self.vehicle_type == 'truk':
+            parking_fee = total_hours * 8000
+        return parking_fee
+
+def get_input(prompt, data_type=str):
+    while True:
+        user_input = input(prompt)
+        try:
+            return data_type(user_input)
+        except ValueError:
+            print("Input tidak valid. Silakan coba lagi.")
+
+def display_menu():
+    print("\nPilihan Menu:")
+    print("1. Masukkan Karcis Parkir")
+    print("2. Keluarkan Karcis Parkir")
+    print("3. Tampilkan Daftar Karcis Parkir")
+    print("4. Keluar")
+
+def create_ticket():
+    vehicle_type = get_input("Masukkan jenis kendaraan (mobil/motor/truk): ")
+    plate_number = get_input("Masukkan nomor plat kendaraan: ")
+    entry_time = get_input("Masukkan waktu masuk (HH:MM): ")
+    ticket = VehicleTicket(vehicle_type, plate_number)
+    ticket.check_in(entry_time)
+    return ticket
+
+def checkout_ticket(vehicles):
+    plate_number = get_input("Masukkan nomor plat kendaraan yang keluar: ")
+    exit_time = get_input("Masukkan waktu keluar (HH:MM): ")
+    found = False
+    for ticket in vehicles:
+        if ticket.plate_number == plate_number:
+            ticket.check_out(exit_time)
+            parking_fee = ticket.calculate_parking_fee()
+            if parking_fee is not None:
+                print(f"Biaya parkir yang harus dibayar: Rp {parking_fee}")
+            vehicles.remove(ticket)
+            found = True
+            break
+    if not found:
+        print("Error: Nomor plat tidak ditemukan.")
+
+def display_ticket_list(vehicles):
+    print("\nDaftar Karcis Parkir:\n")
+    for idx, ticket in enumerate(vehicles, start=1):
+        print(f"Karcis {idx}:")
+        print("Jenis Kendaraan:", ticket.vehicle_type)
+        print("Nomor Plat:", ticket.plate_number)
+        print()
+
+def main():
+    print("Selamat datang di Program Parkir\n")
+    vehicles = []
+
+    while True:
+        display_menu()
+        choice = get_input("Masukkan pilihan (1/2/3/4): ", int)
+
+        if choice == 1:
+            ticket = create_ticket()
+            vehicles.append(ticket)
+
+        elif choice == 2:
+            checkout_ticket(vehicles)
+
+        elif choice == 3:
+            display_ticket_list(vehicles)
+
+        elif choice == 4:
+            print("Terima kasih telah menggunakan program ini.")
+            break
+
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
+
+if __name__ == "__main__":
+    main()
