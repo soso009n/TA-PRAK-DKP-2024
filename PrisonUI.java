@@ -21,15 +21,13 @@ public class PrisonUI extends JFrame {
 
         JLabel titleLabel = new JLabel(prisonType);
         titleLabel.setBounds(10, 10, 200, 25);
-        titleLabel.setForeground(Color.RED); // Warna merah
+        titleLabel.setForeground(Color.RED);
         panel.add(titleLabel);
-
-        // Add more UI elements based on prison type and prisoner categories
 
         backButton = new JButton("Back");
         backButton.setBounds(10, 320, 100, 25);
-        backButton.setBackground(Color.GREEN); // Warna hijau
-        backButton.setForeground(Color.WHITE); // Warna teks putih
+        backButton.setBackground(Color.GREEN);
+        backButton.setForeground(Color.WHITE); 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,8 +40,8 @@ public class PrisonUI extends JFrame {
 
         logoutButton = new JButton("Logout");
         logoutButton.setBounds(470, 320, 100, 25);
-        logoutButton.setBackground(Color.WHITE); // Warna putih
-        logoutButton.setForeground(Color.BLACK); // Warna teks hitam
+        logoutButton.setBackground(Color.WHITE); 
+        logoutButton.setForeground(Color.BLACK); 
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
