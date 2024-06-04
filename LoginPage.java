@@ -69,11 +69,9 @@ public class LoginPage extends JPanel {
 
         submitButton.addActionListener(submitListener);
 
-        // Allow pressing Enter to submit
         usernameField.addActionListener(submitListener);
         passwordField.addActionListener(submitListener);
 
-        // Add some padding and margin for a cleaner look
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
     }
 
