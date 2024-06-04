@@ -11,12 +11,9 @@ public class DummyData {
     
     private static List<Narapidana> prisoners = new ArrayList<>();
 
-    // Metode untuk menambahkan narapidana baru
     public static void addPrisoner(Narapidana prisoner) {
         prisoners.add(prisoner);
     }
-
-    // Metode untuk menghapus narapidana
     public static void removePrisoner(Narapidana prisoner) {
         prisoners.remove(prisoner);
     }
@@ -27,10 +24,10 @@ public class DummyData {
                 return prisoner;
             }
         }
-        return null; // Jika tidak ditemukan narapidana dengan nama yang cocok
+        return null; 
     }
 
-    // Metode untuk mendapatkan narapidana berdasarkan kategori dan jenis
+   
     public static List<Narapidana> getPrisoners(String category, String type) {
         switch (category) {
             case "Laki-Laki":
@@ -44,7 +41,7 @@ public class DummyData {
         }
     }
 
-    // Metode untuk mendapatkan narapidana berdasarkan jenis untuk narapidana pria
+   
     private static List<Narapidana> getMalePrisonersByType(String type) {
         switch (type) {
             case "Sedang":
@@ -57,7 +54,7 @@ public class DummyData {
         }
     }
 
-    // Metode untuk mendapatkan narapidana berdasarkan jenis untuk narapidana wanita
+    
     private static List<Narapidana> getFemalePrisonersByType(String type) {
         switch (type) {
             case "Sedang":
@@ -70,7 +67,7 @@ public class DummyData {
         }
     }
 
-    // Metode untuk mendapatkan narapidana berdasarkan jenis untuk narapidana anak-anak
+    
     private static List<Narapidana> getChildPrisonersByType(String type) {
         switch (type) {
             case "Sedang":
@@ -83,7 +80,7 @@ public class DummyData {
         }
     }
 
-    // Existing methods for male prisoners
+  
     public static List<Narapidana> getMaleLightPrisoners() {
     List<Narapidana> prisoners = new ArrayList<>();
     try {
@@ -184,7 +181,7 @@ public class DummyData {
     return prisoners;
     }
 
-    // Existing methods for female prisoners
+  
     public static List<Narapidana> getFemaleLightPrisoners() {
     List<Narapidana> prisoners = new ArrayList<>();
     try {
@@ -293,7 +290,6 @@ public class DummyData {
     return prisoners;
     }
 
-    // Existing methods for child prisoners
     public static List<Narapidana> getChildLightPrisoners() {
     List<Narapidana> prisoners = new ArrayList<>();
     try {
