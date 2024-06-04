@@ -40,7 +40,7 @@ public class LoginUI extends JFrame {
             String password = new String(passwordField.getPassword());
             
             if (username.equals("admin") && password.equals("admin")) {
-                // Redirect to main menu
+
                 MainMenuUI mainMenu = new MainMenuUI();
                 mainMenu.setVisible(true);
                 dispose();
@@ -50,8 +50,7 @@ public class LoginUI extends JFrame {
         });
         
         panel.add(submitButton);
-        getRootPane().setDefaultButton(submitButton);  // Enable enter key for submit
-
+        getRootPane().setDefaultButton(submitButton); 
         add(panel);
     }
 }
