@@ -19,16 +19,14 @@ public class PrisonPage extends JPanel {
     public PrisonPage(ActionListener backListener, ActionListener logoutListener) {
         setLayout(new BorderLayout());
 
-        // Top panel for logout button
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         logoutButton = new JButton("Logout");
-        logoutButton.setBackground(new Color(255, 69, 0)); // Merah
+        logoutButton.setBackground(new Color(255, 69, 0)); 
         logoutButton.setForeground(Color.WHITE);
         logoutButton.addActionListener(logoutListener);
         topPanel.add(logoutButton);
         add(topPanel, BorderLayout.NORTH);
 
-        // Center panel for prisoner info and combo boxes
         JPanel centerPanel = new JPanel(new BorderLayout());
         JPanel comboBoxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
@@ -43,13 +41,12 @@ public class PrisonPage extends JPanel {
         comboBoxPanel.add(searchField);
 
         JButton searchButton = new JButton("Cari");
-        searchButton.setBackground(new Color(255, 215, 0)); // Kuning
+        searchButton.setBackground(new Color(255, 215, 0)); 
         searchButton.setForeground(Color.BLACK);
         comboBoxPanel.add(searchButton);
 
         centerPanel.add(comboBoxPanel, BorderLayout.NORTH);
 
-        // Panel for displaying prisoners
         prisonerPanel = new JPanel();
         prisonerPanel.setLayout(new BoxLayout(prisonerPanel, BoxLayout.Y_AXIS));
         JScrollPane scrollPane = new JScrollPane(prisonerPanel);
@@ -57,22 +54,20 @@ public class PrisonPage extends JPanel {
 
         add(centerPanel, BorderLayout.CENTER);
 
-        // Bottom panel for back button
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         backButton = new JButton("Back");
-        backButton.setBackground(new Color(0, 128, 0)); // Hijau
+        backButton.setBackground(new Color(0, 128, 0));
         backButton.setForeground(Color.WHITE);
         backButton.addActionListener(backListener);
         bottomPanel.add(backButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        // Action listeners for combo boxes and search button
+
         prisonTypeComboBox.addActionListener(e -> updatePrisoners());
         categoryComboBox.addActionListener(e -> updatePrisoners());
         searchButton.addActionListener(e -> updatePrisoners());
         searchField.addActionListener(e -> updatePrisoners());
 
-        // Initial load of prisoners
         updatePrisoners();
     }
 
@@ -91,14 +86,11 @@ public class PrisonPage extends JPanel {
             prisonerPanel.add(emptyLabel);
         } else {
             for (Narapidana prisoner : prisoners) {
-                // Check if the prisoner is an adult or a child
                 boolean isAdult = selectedCategory.equals("Laki-Laki") || selectedCategory.equals("Perempuan");
                 boolean isMale = selectedCategory.equals("Laki-Laki");
 
-                // Check if the prisoner's gender matches the selected gender
                 if ((isAdult && prisoner.isAdult() && prisoner.isMale() == isMale) ||
                         (!isAdult && !prisoner.isAdult() && prisoner.isMale() == isMale)) {
-                    // Check if the search query matches the prisoner's name or alias
                     String name = prisoner.getNamaLengkap().toLowerCase();
                     String alias = prisoner.getNamaSamaran().toLowerCase();
                     if (name.contains(searchQuery) || alias.contains(searchQuery)) {
@@ -108,7 +100,6 @@ public class PrisonPage extends JPanel {
             }
         }
 
-        // Refresh the prisoner panel
         prisonerPanel.revalidate();
         prisonerPanel.repaint();
     }
