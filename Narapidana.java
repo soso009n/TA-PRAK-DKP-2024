@@ -21,7 +21,6 @@ public class Narapidana {
         this.tanggalKeluar = tanggalKeluar;
     }
 
-    // Getters and Setters
     public String getNamaLengkap() { return namaLengkap; }
     public void setNamaLengkap(String namaLengkap) { this.namaLengkap = namaLengkap; }
 
@@ -44,12 +43,10 @@ public class Narapidana {
     public void setTanggalKeluar(Date tanggalKeluar) { this.tanggalKeluar = tanggalKeluar; }
 
     public boolean isAdult() {
-        // Assuming adulthood is defined as being 18 years or older
         return umur >= 18;
     }
 
     public boolean isMale() {
-        // Assuming gender is determined by checking if the name contains common male names
         String[] maleNames = {"John", "Michael", "William", "David", "James", "Robert", "Joseph"};
         for (String name : maleNames) {
             if (namaLengkap.toLowerCase().contains(name.toLowerCase())) {
@@ -60,10 +57,10 @@ public class Narapidana {
     }
 
     boolean isDewasa() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     boolean isLakiLaki() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
