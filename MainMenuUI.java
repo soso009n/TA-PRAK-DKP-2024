@@ -23,7 +23,6 @@ public class MainMenuUI extends JFrame {
         malePrisonButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Open Male Prison UI
                 PrisonUI malePrisonUI = new PrisonUI("Penjara Laki-Laki");
                 malePrisonUI.setVisible(true);
                 dispose();
@@ -36,7 +35,6 @@ public class MainMenuUI extends JFrame {
         femalePrisonButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Open Female Prison UI
                 PrisonUI femalePrisonUI = new PrisonUI("Penjara Perempuan");
                 femalePrisonUI.setVisible(true);
                 dispose();
@@ -49,7 +47,6 @@ public class MainMenuUI extends JFrame {
         juvenilePrisonButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Open Juvenile Prison UI
                 PrisonUI juvenilePrisonUI = new PrisonUI("Penjara Anak-Anak");
                 juvenilePrisonUI.setVisible(true);
                 dispose();
@@ -62,7 +59,6 @@ public class MainMenuUI extends JFrame {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Return to login
                 LoginUI loginUI = new LoginUI();
                 loginUI.setVisible(true);
                 dispose();
